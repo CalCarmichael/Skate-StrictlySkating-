@@ -135,7 +135,7 @@ class CameraViewController: UIViewController {
             ProgressHUD.showSuccess("Success")
             
             self.clearPost()
-            self.tabBarController?.selectedIndex = 1
+            self.tabBarController?.selectedIndex = 3
             
         })
     

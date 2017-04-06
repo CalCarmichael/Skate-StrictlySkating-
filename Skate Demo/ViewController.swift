@@ -21,6 +21,8 @@ class ViewController: UIViewController, SideBarDelegate, MGLMapViewDelegate {
     
     var skateparks = [Skatepark]()
     
+    var user: FIRUser!
+    
     var locationManager = CLLocationManager()
     
     let locationsRef = FIRDatabase.database().reference(withPath: "locations")
@@ -64,7 +66,9 @@ class ViewController: UIViewController, SideBarDelegate, MGLMapViewDelegate {
         //Initiates the mapView
         
         mapView.delegate = self
+        mapView.showsUserLocation = true
         
+
         //Sidebar
         
         sideBar = SideBar(sourceView: self.view, skateItems: ["All Skate Spots", "Skateparks", "Street Skating", "My Spots"])
@@ -131,10 +135,9 @@ class ViewController: UIViewController, SideBarDelegate, MGLMapViewDelegate {
         
         //When the user clicks the button, send the CLLocation Coordinate 2D make to firebase against their user ID
         
-        let locationsRef = FIRDatabase.database().reference(withPath: "users/MknkigPqoqN7zb2WAF5aAltEshi2/locations")
-        locationsRef.setValue(["lat": locationManager.location?.coordinate.latitude, "lng": locationManager.location?.coordinate.longitude])
+        let locationsRef = FIRDatabase.database().reference(withPath: "users/locations") //need to set to user id here
         
-        //need to add so it doesnt overwrite (add a child?), change the locations so they are actually right (also have to change to just users)
+        locationsRef.setValue(["lat": locationManager.location?.coordinate.latitude, "lng": locationManager.location?.coordinate.longitude])
 
     }
     
