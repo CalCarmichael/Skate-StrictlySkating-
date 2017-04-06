@@ -21,7 +21,37 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var likeCountButton: UIButton!
     @IBOutlet weak var captionLabel: UILabel!
     
+    //Created an instance variable 
     
+    var post: Post? {
+        didSet {
+            
+        updateViewPost()
+            
+            
+        }
+    }
+    
+    func updateViewPost() {
+        
+        captionLabel.text = post?.caption
+        
+        //Inputting user post information
+        
+        profileImageView.image = UIImage(named: "Man")
+        usernameLabel.text = "Callum"
+        
+        //Getting photo url from database
+        
+        if let photoUrlString = post?.photoUrl {
+            
+            let photoUrl = URL(string: photoUrlString)
+            postImageView.sd_setImage(with: photoUrl)
+            
+        }
+
+        
+    }
     
     
     override func awakeFromNib() {

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
 class FeedViewController: UIViewController {
     
@@ -69,15 +70,10 @@ extension FeedViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! FeedTableViewCell
         
+        //Posting the user information from Folder Views - FeedTableViewCell
+        
         let post = posts[indexPath.row]
-        cell.captionLabel.text = post.caption
-        
-        //Inputting user post information 
-        
-        cell.profileImageView.image = UIImage(named: "Man")
-        cell.usernameLabel.text = "Callum"
-        cell.
-        
+        cell.post = post
         return cell
     }
     
