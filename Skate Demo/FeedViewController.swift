@@ -57,9 +57,8 @@ extension FeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-       // return posts.count
+       return posts.count
         
-        return 10
     }
     
     //Customise rows
@@ -70,14 +69,15 @@ extension FeedViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! FeedTableViewCell
         
+        let post = posts[indexPath.row]
+        cell.captionLabel.text = post.caption
+        
         //Inputting user post information 
         
         cell.profileImageView.image = UIImage(named: "Man")
         cell.usernameLabel.text = "Callum"
-        cell.postImageView.image = UIImage(named: "Man")
-        cell.captionLabel.text = "Some text"
+        cell.
         
-       // cell.textLabel?.text = posts[indexPath.row].caption
         return cell
     }
     

@@ -50,6 +50,9 @@ PODS:
   - GTMSessionFetcher/Core (1.1.9)
   - Mapbox-iOS-SDK (3.5.0)
   - ProgressHUD (2.4)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - SidebarOverlay (4.1)
 
 DEPENDENCIES:
@@ -60,6 +63,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - Mapbox-iOS-SDK (~> 3.5)
   - ProgressHUD
+  - SDWebImage (~> 3.8)
   - SidebarOverlay
 
 SPEC CHECKSUMS:
@@ -77,8 +81,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   Mapbox-iOS-SDK: f0158f986ded5fd0b4034b1b8801aeeb5556a26a
   ProgressHUD: 4b66b0df0e08519c5c7283a198fd2867a114c95a
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SidebarOverlay: b65f0a1d9331ce4bf81f82eea202b21cc8655c5a
 
-PODFILE CHECKSUM: b625a5b80bf97750a609c9368aa76074341439fc
+PODFILE CHECKSUM: d7d412ddc1aad82dfb2c4b1dfedd62f5ba79b3f7
 
 COCOAPODS: 1.1.1

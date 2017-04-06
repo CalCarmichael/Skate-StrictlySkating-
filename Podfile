@@ -14,5 +14,6 @@ target 'Skate Demo' do
     pod 'SidebarOverlay'
     pod 'Mapbox-iOS-SDK', '~> 3.5'
     pod 'ProgressHUD'
+    pod 'SDWebImage', '~>3.8'
 
 end
