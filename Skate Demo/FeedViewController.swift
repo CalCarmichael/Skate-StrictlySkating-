@@ -19,6 +19,8 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.estimatedRowHeight = 521
+        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.dataSource = self
         loadPosts()
         
@@ -55,7 +57,9 @@ extension FeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return posts.count
+       // return posts.count
+        
+        return 10
     }
     
     //Customise rows
@@ -64,8 +68,16 @@ extension FeedViewController: UITableViewDataSource {
         
         //Reuses the cells shown rather than uploading all of them at once
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath)
-        cell.textLabel?.text = posts[indexPath.row].caption
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! FeedTableViewCell
+        
+        //Inputting user post information 
+        
+        cell.profileImageView.image = UIImage(named: "Man")
+        cell.usernameLabel.text = "Callum"
+        cell.postImageView.image = UIImage(named: "Man")
+        cell.captionLabel.text = "Some text"
+        
+       // cell.textLabel?.text = posts[indexPath.row].caption
         return cell
     }
     
