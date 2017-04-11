@@ -33,6 +33,14 @@ class FeedTableViewCell: UITableViewCell {
         }
     }
     
+    var user: User? {
+        didSet {
+            
+            setUserInfo()
+            
+        }
+    }
+    
     func updateViewPost() {
         
         captionLabel.text = post?.caption
@@ -53,34 +61,28 @@ class FeedTableViewCell: UITableViewCell {
         //Grabbing all user information its observing and retrieving from specific user uid
         
         func setUserInfo() {
-            
-          if let uid = post?.uid {
-            FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: FIRDataEventType.value, with: {
-                snapshot in 
-                if let dict = snapshot.value as? [String: Any] {
-                    
-                    //Retrieving from the database - Model User created class
-                    
-                    let user = User.transformUser(dict: dict)
-                    self.usernameLabel.text = user.username
-                    if let photoUrlString = user.profileImageUrl {
-                        let photoUrl = URL(string: photoUrlString)
-                        self.profileImageView.sd_setImage(with: photoUrl)
-                        
-                    }
-                    
-                }
-
-            })
+        
+        usernameLabel.text = user?.username
+            if let photoUrlString = user?.profileImageUrl {
+                let photoUrl = URL(string: photoUrlString)
+                profileImageView.sd_setImage(with: photoUrl, placeholderImage: UIImage(named: "placeholderImage"))
+            }
             
         }
-        
-    }
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        usernameLabel.text = ""
+        captionLabel.text = ""
+    }
+    
+    //Deletes all old data
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        profileImageView.image = UIImage(named: "placeholderImage")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
