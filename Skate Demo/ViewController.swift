@@ -137,7 +137,7 @@ class ViewController: UIViewController, SideBarDelegate, MGLMapViewDelegate {
         
         let uid = FIRAuth.auth()!.currentUser!.uid
         
-        let locationsRef = FIRDatabase.database().reference().child("users").child("locations").child(uid).childByAutoId()
+        let locationsRef = FIRDatabase.database().reference().child("users").child("personalLocations").child(uid).childByAutoId()
         
         locationsRef.setValue(["lat": locationManager.location?.coordinate.latitude, "lng": locationManager.location?.coordinate.longitude])
 
