@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class FeedTableViewCell: UITableViewCell {
 
@@ -36,11 +37,6 @@ class FeedTableViewCell: UITableViewCell {
         
         captionLabel.text = post?.caption
         
-        //Inputting user post information
-        
-        profileImageView.image = UIImage(named: "Man")
-        usernameLabel.text = "Callum"
-        
         //Getting photo url from database
         
         if let photoUrlString = post?.photoUrl {
@@ -50,6 +46,34 @@ class FeedTableViewCell: UITableViewCell {
             
         }
 
+        setUserInfo()
+            
+        }
+    
+        //Grabbing all user information its observing and retrieving from specific user uid
+        
+        func setUserInfo() {
+            
+          if let uid = post?.uid {
+            FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: FIRDataEventType.value, with: {
+                snapshot in 
+                if let dict = snapshot.value as? [String: Any] {
+                    
+                    //Retrieving from the database - Model User created class
+                    
+                    let user = User.transformUser(dict: dict)
+                    self.usernameLabel.text = user.username
+                    if let photoUrlString = user.profileImageUrl {
+                        let photoUrl = URL(string: photoUrlString)
+                        self.profileImageView.sd_setImage(with: photoUrl)
+                        
+                    }
+                    
+                }
+
+            })
+            
+        }
         
     }
     

@@ -124,7 +124,11 @@ class CameraViewController: UIViewController {
         let postsReference = ref.child("posts")
         let newPostId = postsReference.childByAutoId().key
         let newPostReference = postsReference.child(newPostId)
-        newPostReference.setValue(["photoUrl": photoUrl, "caption": captionTextView.text!], withCompletionBlock: {
+        guard let currentUser = FIRAuth.auth()?.currentUser else {
+            return
+        }
+            let currentUserId = currentUser.uid
+        newPostReference.setValue(["uid": currentUserId, "photoUrl": photoUrl, "caption": captionTextView.text!], withCompletionBlock: {
             (error, ref) in
             
             if error != nil {
