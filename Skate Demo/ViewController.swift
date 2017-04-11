@@ -134,8 +134,10 @@ class ViewController: UIViewController, SideBarDelegate, MGLMapViewDelegate {
         mapView.showAnnotations([pinForUserLocation], animated: true)
         
         //When the user clicks the button, send the CLLocation Coordinate 2D make to firebase against their user ID
-    
-        let locationsRef = FIRDatabase.database().reference(withPath: "users/locations") //need to set to user id here
+        
+        let uid = FIRAuth.auth()!.currentUser!.uid
+        
+        let locationsRef = FIRDatabase.database().reference().child("users").child("locations").child(uid).childByAutoId()
         
         locationsRef.setValue(["lat": locationManager.location?.coordinate.latitude, "lng": locationManager.location?.coordinate.longitude])
 

@@ -35,6 +35,8 @@ class FeedViewController: UIViewController {
     
     func loadPosts() {
         
+        //Activity loading animation start - then stops before reloading data
+        
         activityIndicatorView.startAnimating()
         
         FIRDatabase.database().reference().child("posts").observe(.childAdded) { (snapshot: FIRDataSnapshot) in
