@@ -354,7 +354,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="pLj-Ui-Fjo"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dislike-50" highlightedImage="Dislike Filled-50" translatesAutoresizingMaskIntoConstraints="NO" id="8Az-to-q8f">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Forward Punch-50" highlightedImage="Dislike Filled-50" translatesAutoresizingMaskIntoConstraints="NO" id="8Az-to-q8f">
                                                     <rect key="frame" x="53" y="381" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="eOO-ow-00c"/>
@@ -662,7 +662,7 @@
     </scenes>
     <resources>
         <image name="Dislike Filled-50" width="50" height="50"/>
-        <image name="Dislike-50" width="50" height="50"/>
+        <image name="Forward Punch-50" width="50" height="50"/>
         <image name="Like-50" width="50" height="50"/>
         <image name="Speech Bubble Filled-50" width="50" height="50"/>
         <image name="Speech Bubble-50" width="50" height="50"/>
