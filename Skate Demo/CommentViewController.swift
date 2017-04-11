@@ -21,7 +21,14 @@ class CommentViewController: UIViewController {
         
         empty()
         handleTextField()
+        loadComments
         
+        
+    }
+    
+    func loadComments() {
+        
+    
         
     }
     
@@ -60,7 +67,7 @@ class CommentViewController: UIViewController {
     
         let ref = FIRDatabase.database().reference()
         let commentsReference = ref.child("posts")
-        let newCommentsId = postsReference.childByAutoId().key
+        let newCommentId = postsReference.childByAutoId().key
         let newCommentReference = CommentsReference.child(newCommentId)
         guard let currentUser = FIRAuth.auth()?.currentUser else {
             return
@@ -74,6 +81,16 @@ class CommentViewController: UIViewController {
                 return
             }
             
+            let postId = ""
+            let postCommentReference = FIRDatabase.database().reference()("post-comment").child(postId).child(newCommentId)
+            postCommentRef.setValue(true, withCompletionBlock: { (error, ref) in
+                if error != nil {
+                    ProgressHUD.showError(error!.localizedDescription)
+                    return
+                }
+            
+            })
+                
             self.empty()
             
         })
@@ -81,7 +98,7 @@ class CommentViewController: UIViewController {
     }
     
     func empty() {
-        self.commentTextField.text = ""
+        self.commentTextField.text = //Can put in fake data here to test
         self.commentSendButton.isEnabled = false
         self.commentSendButton.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
         
