@@ -486,7 +486,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mbP-HM-2SE">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" rowHeight="80" id="PYy-xk-P2J" customClass="CommentTableViewCell" customModule="Skate_Demo" customModuleProvider="target">
@@ -539,15 +539,56 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wrK-AW-82o">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="odt-4C-Omo">
+                                        <rect key="frame" x="8" y="8" width="315" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="315" id="mIU-eU-dfT"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZQ-Hg-Fsi">
+                                        <rect key="frame" x="331" y="8" width="36" height="34"/>
+                                        <state key="normal" title="Send">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sendButton_TouchUpInside:" destination="tjW-wH-CtW" eventType="touchUpInside" id="uPY-IQ-PuS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="NZQ-Hg-Fsi" firstAttribute="top" secondItem="wrK-AW-82o" secondAttribute="top" constant="8" id="5pm-s9-EpV"/>
+                                    <constraint firstAttribute="bottom" secondItem="NZQ-Hg-Fsi" secondAttribute="bottom" constant="8" id="91Q-yP-Lhl"/>
+                                    <constraint firstAttribute="height" constant="50" id="Fxu-G4-DSu"/>
+                                    <constraint firstItem="NZQ-Hg-Fsi" firstAttribute="leading" secondItem="odt-4C-Omo" secondAttribute="trailing" constant="8" symbolic="YES" id="Jes-Z8-ViU"/>
+                                    <constraint firstAttribute="trailing" secondItem="NZQ-Hg-Fsi" secondAttribute="trailing" constant="8" id="QHJ-rT-jre"/>
+                                    <constraint firstItem="odt-4C-Omo" firstAttribute="top" secondItem="NZQ-Hg-Fsi" secondAttribute="top" id="VwK-dv-orv"/>
+                                    <constraint firstItem="odt-4C-Omo" firstAttribute="bottom" secondItem="NZQ-Hg-Fsi" secondAttribute="bottom" id="h6w-HK-8PX"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mbP-HM-2SE" firstAttribute="top" secondItem="I0B-HI-AiA" secondAttribute="top" id="4DT-Ws-7zv"/>
-                            <constraint firstAttribute="bottom" secondItem="mbP-HM-2SE" secondAttribute="bottom" id="88F-dU-a4d"/>
+                            <constraint firstItem="wrK-AW-82o" firstAttribute="top" secondItem="mbP-HM-2SE" secondAttribute="bottom" id="7L3-ba-mLJ"/>
+                            <constraint firstItem="opJ-nq-aqv" firstAttribute="top" secondItem="wrK-AW-82o" secondAttribute="bottom" id="B8U-pN-jN1"/>
                             <constraint firstItem="mbP-HM-2SE" firstAttribute="leading" secondItem="I0B-HI-AiA" secondAttribute="leading" id="CRh-gV-0vQ"/>
+                            <constraint firstAttribute="trailing" secondItem="wrK-AW-82o" secondAttribute="trailing" id="LG8-aC-wZM"/>
+                            <constraint firstItem="wrK-AW-82o" firstAttribute="leading" secondItem="I0B-HI-AiA" secondAttribute="leading" id="NKw-Nd-fjq"/>
                             <constraint firstAttribute="trailing" secondItem="mbP-HM-2SE" secondAttribute="trailing" id="ggm-Mk-E8n"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="commentSendButton" destination="NZQ-Hg-Fsi" id="0R6-gR-cSO"/>
+                        <outlet property="commentTextField" destination="odt-4C-Omo" id="VqE-P0-N8C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0pF-Hr-U7n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -64,6 +64,13 @@ class FeedViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //Keeps the tab bar on this page rather than removing in comments
+        
+        self.tabBarController?.tabBar.isHidden = false
+    
     //Look up the right user on the database (escaping means having no input return nothing)
     
     func getUser(uid: String, completed: @escaping () -> Void) {
@@ -85,6 +92,8 @@ class FeedViewController: UIViewController {
 
         
     }
+    
+  }
     
 }
 
@@ -116,3 +125,5 @@ extension FeedViewController: UITableViewDataSource {
     }
     
 }
+
+
