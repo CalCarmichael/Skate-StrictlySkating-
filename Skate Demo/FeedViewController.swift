@@ -15,6 +15,8 @@ class FeedViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
     var posts = [Post]()
     var users = [User]()
     
@@ -33,6 +35,8 @@ class FeedViewController: UIViewController {
     
     func loadPosts() {
         
+        activityIndicatorView.startAnimating()
+        
         FIRDatabase.database().reference().child("posts").observe(.childAdded) { (snapshot: FIRDataSnapshot) in
             
             if let dict = snapshot.value as? [String: Any] {
@@ -43,6 +47,9 @@ class FeedViewController: UIViewController {
                 self.getUser(uid: newPost.uid!, completed: {
                     
                     self.posts.append(newPost)
+                    
+                    self.activityIndicatorView.stopAnimating()
+                    
                     self.tableView.reloadData()
                     
                 })
