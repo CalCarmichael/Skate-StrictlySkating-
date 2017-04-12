@@ -89,6 +89,29 @@ class ViewController: UIViewController, SideBarDelegate, MGLMapViewDelegate {
 
                 self.addAnnotation(park: newSkatepark)
             }
+            
+            self.loadCustomLocations()
+            
+        })
+    }
+    
+    func loadCustomLocations() {
+        let uid = FIRAuth.auth()!.currentUser!.uid
+        
+        let userLocationsRef = FIRDatabase.database().reference(withPath: "users/\(uid)/personalLocations")
+        
+        userLocationsRef.observe(.value, with: { snapshot in
+            print(snapshot)
+            
+            for item in snapshot.children {
+                guard let snapshot = item as? FIRDataSnapshot else { continue }
+                
+                let newSkatepark = Skatepark(snapshot: snapshot)
+                
+                self.skateparks.append(newSkatepark)
+                
+                self.addAnnotation(park: newSkatepark)
+            }
         })
     }
     
@@ -139,7 +162,7 @@ class ViewController: UIViewController, SideBarDelegate, MGLMapViewDelegate {
         
         let locationsRef = FIRDatabase.database().reference().child("users").child(uid).child("personalLocations").childByAutoId()
         
-        locationsRef.setValue(["lat": locationManager.location?.coordinate.latitude, "lng": locationManager.location?.coordinate.longitude])
+        locationsRef.setValue(["lat": locationManager.location?.coordinate.latitude, "lng": locationManager.location?.coordinate.longitude, "name": "Test", "type": 0, "subtitle": "some subtitle"])
 
     }
     
