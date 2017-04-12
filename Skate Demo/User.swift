@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class User {
     
@@ -14,7 +15,7 @@ class User {
     var profileImageUrl: String?
     var username: String?
     
-    
+
 }
 
 extension User {

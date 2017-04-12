@@ -46,6 +46,7 @@ class FeedViewController: UIViewController {
                 //Retrieving from the database - post Model created class
                 
                 let newPost = Post.transformPostPhoto(dict: dict)
+                
                 self.getUser(uid: newPost.uid!, completed: {
                     
                     self.posts.append(newPost)
@@ -64,7 +65,22 @@ class FeedViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_animated: Bool) {
+    func getUser(uid: String, completed: @escaping () -> Void) {
+        
+        FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: FIRDataEventType.value, with: {
+            snapshot in
+            if let dict = snapshot.value as? [String : Any] {
+                let user = User.transformUser(dict: dict)
+                self.users.append(user)
+                completed()
+            }
+        })
+        
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         //Keeps the tab bar on this page rather than removing in comments

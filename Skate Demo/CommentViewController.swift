@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import ProgressHUD
 
 class CommentViewController: UIViewController {
 
@@ -21,7 +22,7 @@ class CommentViewController: UIViewController {
         
         empty()
         handleTextField()
-        loadComments
+       
         
         
     }
@@ -45,6 +46,7 @@ class CommentViewController: UIViewController {
             return
         }
 
+        
     
         commentSendButton.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
         commentSendButton.isEnabled = false
@@ -52,8 +54,8 @@ class CommentViewController: UIViewController {
     }
 
 
-        override func viewWillAppear(_animated: Bool) {
-            super.viewWillAppear(animated)
+        override func viewWillAppear(_ _animated: Bool) {
+            super.viewWillAppear(_animated)
             
             //Get rid of tab bar on this page
             
@@ -66,9 +68,9 @@ class CommentViewController: UIViewController {
     @IBAction func sendButton_TouchUpInside(_ sender: Any) {
     
         let ref = FIRDatabase.database().reference()
-        let commentsReference = ref.child("posts")
-        let newCommentId = postsReference.childByAutoId().key
-        let newCommentReference = CommentsReference.child(newCommentId)
+        let commentsReference = ref.child("comments")
+        let newCommentId = commentsReference.childByAutoId().key
+        let newCommentReference = commentsReference.child(newCommentId)
         guard let currentUser = FIRAuth.auth()?.currentUser else {
             return
         }
@@ -80,16 +82,7 @@ class CommentViewController: UIViewController {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
             }
-            
-            let postId = ""
-            let postCommentReference = FIRDatabase.database().reference()("post-comment").child(postId).child(newCommentId)
-            postCommentRef.setValue(true, withCompletionBlock: { (error, ref) in
-                if error != nil {
-                    ProgressHUD.showError(error!.localizedDescription)
-                    return
-                }
-            
-            })
+
                 
             self.empty()
             
@@ -98,7 +91,8 @@ class CommentViewController: UIViewController {
     }
     
     func empty() {
-        self.commentTextField.text = //Can put in fake data here to test
+        
+        self.commentTextField.text = ""
         self.commentSendButton.isEnabled = false
         self.commentSendButton.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
         
