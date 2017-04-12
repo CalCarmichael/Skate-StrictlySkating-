@@ -12,7 +12,7 @@ import CoreLocation
 
 
 enum SkateType: Int {
-    case park = 0, street
+    case park = 0, street, own
 }
 
 class Skatepark {

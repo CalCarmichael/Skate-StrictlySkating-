@@ -205,31 +205,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Skate Spot Style:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o7Z-tN-9mM">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Skate Spot Style:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o7Z-tN-9mM">
                                 <rect key="frame" x="16" y="168" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Skate Spot Title:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="veW-xh-NnX">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Skate Spot Title:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="veW-xh-NnX">
                                 <rect key="frame" x="16" y="130" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b9u-Aa-mUn">
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9u-Aa-mUn">
                                 <rect key="frame" x="0.0" y="206" width="375" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="nlc-38-EC9" id="YcZ-mL-iWL"/>
                                     <outlet property="delegate" destination="nlc-38-EC9" id="b5u-d5-eQi"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ToZ-j4-svr">
-                                <rect key="frame" x="26" y="430" width="35" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ToZ-j4-svr">
+                                <rect key="frame" x="170" y="392" width="35" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="vfr-ib-O5B"/>
+                                </constraints>
                                 <state key="normal" title="Add"/>
                                 <connections>
                                     <action selector="addPinAndSaveLocation:" destination="nlc-38-EC9" eventType="touchUpInside" id="sZ5-Xa-Z0G"/>
@@ -237,6 +236,19 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="veW-xh-NnX" firstAttribute="leading" secondItem="gO9-85-U6P" secondAttribute="leadingMargin" id="AXy-oZ-llp"/>
+                            <constraint firstItem="veW-xh-NnX" firstAttribute="top" secondItem="p8M-Kh-6jW" secondAttribute="bottom" constant="66" id="GEd-Xd-LAn"/>
+                            <constraint firstItem="o7Z-tN-9mM" firstAttribute="leading" secondItem="veW-xh-NnX" secondAttribute="leading" id="Hch-im-R1J"/>
+                            <constraint firstItem="ToZ-j4-svr" firstAttribute="centerX" secondItem="b9u-Aa-mUn" secondAttribute="centerX" id="PR6-bA-UmH"/>
+                            <constraint firstItem="b9u-Aa-mUn" firstAttribute="centerX" secondItem="o7Z-tN-9mM" secondAttribute="centerX" id="dIz-0d-Mxo"/>
+                            <constraint firstItem="veW-xh-NnX" firstAttribute="trailing" secondItem="gO9-85-U6P" secondAttribute="trailingMargin" id="fNL-66-tbj"/>
+                            <constraint firstItem="o7Z-tN-9mM" firstAttribute="top" secondItem="veW-xh-NnX" secondAttribute="bottom" constant="8" symbolic="YES" id="hgx-54-A5W"/>
+                            <constraint firstItem="ToZ-j4-svr" firstAttribute="bottom" secondItem="b9u-Aa-mUn" secondAttribute="bottom" id="jd4-4E-RGC"/>
+                            <constraint firstItem="b9u-Aa-mUn" firstAttribute="leading" secondItem="gO9-85-U6P" secondAttribute="leading" id="ngY-w1-qkt"/>
+                            <constraint firstItem="o7Z-tN-9mM" firstAttribute="trailing" secondItem="veW-xh-NnX" secondAttribute="trailing" id="stM-P0-5Bg"/>
+                            <constraint firstItem="b9u-Aa-mUn" firstAttribute="top" secondItem="o7Z-tN-9mM" secondAttribute="bottom" constant="8" symbolic="YES" id="zeQ-8I-a1j"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="pickerView" destination="b9u-Aa-mUn" id="ZAJ-Yg-DmG"/>

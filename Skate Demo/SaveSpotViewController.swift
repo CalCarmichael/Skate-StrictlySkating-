@@ -16,7 +16,8 @@ class SaveSpotViewController: UIViewController {
     @IBOutlet weak var skateStyleText: UITextField!
     
     @IBOutlet weak var pickerView: UIPickerView!
-    var options = ["Select Type", "Park", "Street"]
+    
+    var options = ["Select Type", "Skatepark", "Street Skating", "Personal Spots"]
     
     var skateparks = [Skatepark]()
     

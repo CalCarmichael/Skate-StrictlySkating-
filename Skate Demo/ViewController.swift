@@ -49,7 +49,7 @@ class ViewController: UIViewController, SideBarDelegate, MGLMapViewDelegate {
             
             //Change this to feature the users own personal spots they saved to firebase
             
-            if index == 3 {
+            if index == 3 && park.type == .own {
                 addAnnotation(park: park)
             }
             
@@ -71,7 +71,7 @@ class ViewController: UIViewController, SideBarDelegate, MGLMapViewDelegate {
 
         //Sidebar
         
-        sideBar = SideBar(sourceView: self.view, skateItems: ["All Skate Spots", "Skateparks", "Street Skating", "My Spots"])
+        sideBar = SideBar(sourceView: self.view, skateItems: ["All Skate Spots", "Skateparks", "Street Skating", "Personal Spots"])
         sideBar.delegate = self
         
         
