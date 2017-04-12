@@ -96,6 +96,7 @@ class ViewController: UIViewController, SideBarDelegate, MGLMapViewDelegate {
     }
     
     func loadCustomLocations() {
+        
         let uid = FIRAuth.auth()!.currentUser!.uid
         
         let userLocationsRef = FIRDatabase.database().reference(withPath: "users/\(uid)/personalLocations")

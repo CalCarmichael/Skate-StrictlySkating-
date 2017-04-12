@@ -16,6 +16,7 @@ class SaveSpotViewController: UIViewController {
     @IBOutlet weak var skateStyleText: UITextField!
     @IBOutlet weak var skateTypeText: UITextField!
     
+    var skateparks = [Skatepark]()
     
     var user: FIRUser!
     
@@ -37,19 +38,13 @@ class SaveSpotViewController: UIViewController {
         
         pinForUserLocation.coordinate = userLocationCoordinates
         
-//        pinForUserLocation.title = ""
-//        pinForUserLocation.subtitle = ""
-        
-        guard let skateTitleText = skateTitleText.text, let skateStyleText = skateStyleText.text, let skateTypeText = skateTypeText.text else { return }
-        
-        guard skateTitleText.characters.count > 0, skateStyleText.characters.count > 0, skateTypeText.characters.count > 0 else {
-            
-            return
-            
-        }
-        
-//        mapView.addAnnotation(pinForUserLocation)
-//        mapView.showAnnotations([pinForUserLocation], animated: true)
+//        guard let skateTitleText = skateTitleText.text, let skateStyleText = skateStyleText.text, let skateTypeText = skateTypeText.text else { return }
+//        
+//        guard skateTitleText.characters.count > 0, skateStyleText.characters.count > 0, skateTypeText.characters.count > 0 else {
+//            
+//            return
+//            
+//        }
         
         //When the user clicks the button, send the CLLocation Coordinate 2D make to firebase against their user ID
         
@@ -57,9 +52,11 @@ class SaveSpotViewController: UIViewController {
         
         let locationsRef = FIRDatabase.database().reference().child("users").child(uid).child("personalLocations").childByAutoId()
         
-        let personalLocations: [String: Any] = ["name": skateTitleText, "subtitle": skateStyleText, "type": skateTypeText]
+    //    let Skatepark: [String: Any] = ["name": skateTitleText, "subtitle": skateStyleText, "type": skateTypeText]
         
-        locationsRef.setValue(["lat": locationManager.location?.coordinate.latitude, "lng": locationManager.location?.coordinate.longitude])
+        locationsRef.setValue(["lat": locationManager.location?.coordinate.latitude, "lng": locationManager.location?.coordinate.longitude, "name": "User", "subtitle": "Street Skating", "type": 1])
+        
+       
     
     }
 
