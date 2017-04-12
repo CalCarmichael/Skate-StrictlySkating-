@@ -141,30 +141,32 @@ class ViewController: UIViewController, SideBarDelegate, MGLMapViewDelegate {
     }
     
     
-    //User can save their location
-    @IBAction func findUserLocationAndDropPin(_ sender: UIButton) {
-        
-        let userLocationCoordinates = CLLocationCoordinate2DMake((locationManager.location?.coordinate.latitude)!, (locationManager.location?.coordinate.longitude)!)
-        
-        let pinForUserLocation = MGLPointAnnotation()
-        
-        pinForUserLocation.coordinate = userLocationCoordinates
-        
-        pinForUserLocation.title = ""
-        pinForUserLocation.subtitle = ""
-        
-        mapView.addAnnotation(pinForUserLocation)
-        mapView.showAnnotations([pinForUserLocation], animated: true)
-        
-        //When the user clicks the button, send the CLLocation Coordinate 2D make to firebase against their user ID
-        
-        let uid = FIRAuth.auth()!.currentUser!.uid
-        
-        let locationsRef = FIRDatabase.database().reference().child("users").child(uid).child("personalLocations").childByAutoId()
-        
-        locationsRef.setValue(["lat": locationManager.location?.coordinate.latitude, "lng": locationManager.location?.coordinate.longitude, "name": "Test", "type": 0, "subtitle": "some subtitle"])
-
-    }
+//    //User can save their location
+//    @IBAction func findUserLocationAndDropPin(_ sender: UIButton) {
+//        
+//        let userLocationCoordinates = CLLocationCoordinate2DMake((locationManager.location?.coordinate.latitude)!, (locationManager.location?.coordinate.longitude)!)
+//        
+//        let pinForUserLocation = MGLPointAnnotation()
+//        
+//        pinForUserLocation.coordinate = userLocationCoordinates
+//        
+//        pinForUserLocation.title = ""
+//        pinForUserLocation.subtitle = ""
+//        
+//        mapView.addAnnotation(pinForUserLocation)
+//        mapView.showAnnotations([pinForUserLocation], animated: true)
+//        
+//        //When the user clicks the button, send the CLLocation Coordinate 2D make to firebase against their user ID
+//        
+//        let uid = FIRAuth.auth()!.currentUser!.uid
+//        
+//        let locationsRef = FIRDatabase.database().reference().child("users").child(uid).child("personalLocations").childByAutoId()
+//        
+//        locationsRef.setValue(["lat": locationManager.location?.coordinate.latitude, "lng": locationManager.location?.coordinate.longitude, "name": "Test", "type": 0, "subtitle": "some subtitle"])
+//        
+//        
+//
+//    }
     
 
     //Show the annotation callout

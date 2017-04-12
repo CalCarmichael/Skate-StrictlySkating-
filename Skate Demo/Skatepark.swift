@@ -28,7 +28,9 @@ class Skatepark {
         subtitle = snapshotValue["subtitle"] as! String
         coordinate = CLLocationCoordinate2D(latitude: snapshotValue["lat"] as! Double, longitude: snapshotValue["lng"] as! Double)
         type = SkateType(rawValue: snapshotValue["type"] as! Int)!
+    
     }
+
 }
 
 
