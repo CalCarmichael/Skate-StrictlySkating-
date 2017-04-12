@@ -14,7 +14,6 @@ class SaveSpotViewController: UIViewController {
     
     @IBOutlet weak var skateTitleText: UITextField!
     @IBOutlet weak var skateStyleText: UITextField!
-    @IBOutlet weak var skateTypeText: UITextField!
     
     @IBOutlet weak var pickerView: UIPickerView!
     var options = ["Select Type", "Park", "Street"]
@@ -31,8 +30,6 @@ class SaveSpotViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    
-    skateTypeText.keyboardType = .numberPad
     
     }
 
@@ -51,13 +48,13 @@ class SaveSpotViewController: UIViewController {
             return
         }
         
-//        guard let skateTitleText = skateTitleText.text, let skateStyleText = skateStyleText.text, let skateTypeText = skateTypeText.text else { return }
-//        
-//        guard skateTitleText.characters.count > 0, skateStyleText.characters.count > 0, skateTypeText.characters.count > 0 else {
-//            
-//            return
-//            
-//        }
+      guard let skateTitleText = skateTitleText.text, let skateStyleText = skateStyleText.text else { return }
+    
+        guard skateTitleText.characters.count > 0, skateStyleText.characters.count > 0 else {
+            
+            return
+            
+        }
         
         //When the user clicks the button, send the CLLocation Coordinate 2D make to firebase against their user ID
         
