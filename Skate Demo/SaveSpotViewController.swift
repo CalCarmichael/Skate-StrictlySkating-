@@ -16,6 +16,9 @@ class SaveSpotViewController: UIViewController {
     @IBOutlet weak var skateStyleText: UITextField!
     @IBOutlet weak var skateTypeText: UITextField!
     
+    @IBOutlet weak var pickerView: UIPickerView!
+    var options = ["Select Type", "Park", "Street"]
+    
     var skateparks = [Skatepark]()
     
     var user: FIRUser!
@@ -28,6 +31,9 @@ class SaveSpotViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    
+    skateTypeText.keyboardType = .numberPad
+    
     }
 
     @IBAction func addPinAndSaveLocation(_ sender: Any) {
@@ -58,3 +64,28 @@ class SaveSpotViewController: UIViewController {
     }
 
 }
+
+extension SaveSpotViewController: UIPickerViewDelegate {
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return options[row]
+    }
+    
+}
+
+extension SaveSpotViewController: UIPickerViewDataSource {
+    
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return options.count
+    }
+    
+    
+}
+
