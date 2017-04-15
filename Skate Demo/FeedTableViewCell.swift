@@ -53,8 +53,6 @@ class FeedTableViewCell: UITableViewCell {
             postImageView.sd_setImage(with: photoUrl)
             
         }
-
-        setUserInfo()
             
         }
     

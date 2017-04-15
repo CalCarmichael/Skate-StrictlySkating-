@@ -50,14 +50,11 @@ class FeedViewController: UIViewController {
                 self.getUser(uid: newPost.uid!, completed: {
                     
                     self.posts.append(newPost)
-                    
                     self.activityIndicatorView.stopAnimating()
-                    
                     self.tableView.reloadData()
                     
-                })
                     
-               
+                })
                 
             }
             
@@ -65,7 +62,14 @@ class FeedViewController: UIViewController {
         
     }
     
-    func getUser(uid: String, completed: @escaping () -> Void) {
+    @IBAction func button_TouchUpInside(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "CommentSegue", sender: nil)
+        
+    }
+    
+    
+    func getUser(uid: String, completed: @escaping () -> Void ) {
         
         FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: FIRDataEventType.value, with: {
             snapshot in
@@ -86,30 +90,30 @@ class FeedViewController: UIViewController {
         //Keeps the tab bar on this page rather than removing in comments
         
         self.tabBarController?.tabBar.isHidden = false
-    
-    //Look up the right user on the database (escaping means having no input return nothing)
-    
-    func getUser(uid: String, completed: @escaping () -> Void) {
         
-        FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: FIRDataEventType.value, with: {
-            snapshot in
-            if let dict = snapshot.value as? [String: Any] {
-                
-                //Retrieving from the database - Model User created class
-                
-                let user = User.transformUser(dict: dict)
-                self.users.append(user)
-                completed()
-               
-                
-            }
+        //Look up the right user on the database (escaping means having no input return nothing)
+        
+        func getUser(uid: String, completed: @escaping () -> Void) {
             
-        })
-
+            FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: FIRDataEventType.value, with: {
+                snapshot in
+                if let dict = snapshot.value as? [String: Any] {
+                    
+                    //Retrieving from the database - Model User created class
+                    
+                    let user = User.transformUser(dict: dict)
+                    self.users.append(user)
+                    completed()
+                    
+                    
+                }
+                
+            })
+            
+            
+        }
         
     }
-    
-  }
     
 }
 
@@ -119,7 +123,7 @@ extension FeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-       return posts.count
+        return posts.count
         
     }
     

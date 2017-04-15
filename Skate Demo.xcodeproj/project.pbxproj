@@ -31,6 +31,7 @@
 		9FE94C1F1E796B75009B7B3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FE94C1E1E796B75009B7B3F /* Assets.xcassets */; };
 		9FE94C221E796B75009B7B3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FE94C201E796B75009B7B3F /* LaunchScreen.storyboard */; };
 		ECEF6FB350133433EE4C3DE1 /* Pods_Skate_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 483438A8696DFED5EDC6AD7C /* Pods_Skate_Demo.framework */; };
+		F2B9422A1EA134B000CBE9C6 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B942291EA134B000CBE9C6 /* Comment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		9FE94C231E796B75009B7B3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4B012B0EBACD45EE8A005CB /* Pods-Skate Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skate Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Skate Demo/Pods-Skate Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		BB0B8B619B04F5997E0BDF68 /* Pods-Skate Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skate Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Skate Demo/Pods-Skate Demo.release.xcconfig"; sourceTree = "<group>"; };
+		F2B942291EA134B000CBE9C6 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				9F34896E1E965687003A85BE /* Post.swift */,
 				9F3EE3DB1E9D099000D0BC69 /* User.swift */,
+				F2B942291EA134B000CBE9C6 /* Comment.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				9FE47D791E9693830030E817 /* FeedTableViewCell.swift in Sources */,
 				9F47636E1E93C00200D74370 /* Config.swift in Sources */,
 				9F4763691E93AE1E00D74370 /* ProfileViewController.swift in Sources */,
+				F2B9422A1EA134B000CBE9C6 /* Comment.swift in Sources */,
 				9F34896C1E9650CB003A85BE /* FeedViewController.swift in Sources */,
 				9F8D373C1E82A7DD003E36CB /* Skatepark.swift in Sources */,
 			);
